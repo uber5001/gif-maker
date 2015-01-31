@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>gif maker</title>
+<style>
+</style>
+<script>
+//Helper functions
+var $ = function(selector){return document.querySelector(selector)};
+var $$ = function(selector){return document.querySelectorAll(selector)};
+//Check for needed HTML5 APIs
+if (!window.File) throw "File API's \"File\" is not supported";
+if (!window.FileReader) throw "File API's \"FileReader\" is not supported";
+if (!window.FileList) throw "File API's \"FileList\" is not supported";
+if (!window.Blob) throw "File API's \"Blob\" is not supported";
+
+//NOTE: this can be deferred if moved to an external script
+window.onload = function() {
+	$("#fileInput").addEventListener("change", function(e) {
+		console.log(e.target.files);
+	});
+}
+</script>
+</head>
+<body>
+	<input type="file" id="fileInput" multiple>
+</body>
+</html>
