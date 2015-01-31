@@ -1,8 +1,10 @@
 <!doctype html>
 <html>
+<!--Refer to http://www.html5rocks.com/en/tutorials/file/dndfiles/ for the tutorial on reading files -->
 <head>
 <title>gif maker</title>
 <style>
+img { width: 100%; }
 </style>
 <script>
 //Helper functions
@@ -17,12 +19,40 @@ if (!window.Blob) throw "File API's \"Blob\" is not supported";
 //NOTE: this can be deferred if moved to an external script
 window.onload = function() {
 	$("#fileInput").addEventListener("change", function(e) {
-		console.log(e.target.files);
+		var files = e.target.files;
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var reader = new FileReader();
+			// generate a new function scope and pass in
+			// "file", so that it doesn't get lost in the
+			// next iteration
+			reader.onload = (function(file) {
+				return function(e) {
+					//render to page
+					var img = document.createElement("img");
+					img.src = e.target.result;
+					img.title = file.name;
+					document.body.appendChild(img);
+
+					//output to filesystem
+					downloadURL(e.target.result, file.name);
+				}
+			})(file);
+			reader.readAsDataURL(file);
+		}
 	});
+}
+
+function downloadURL(url, name) {
+	//there's gotta be a better way...
+	var a = document.createElement("a");
+	a.download = name || "output.gif";
+	a.href = url;
+	a.click();
 }
 </script>
 </head>
 <body>
-	<input type="file" id="fileInput" multiple>
+	<input type="file" id="fileInput" multiple accept="image/*">
 </body>
 </html>
