@@ -1,0 +1,21 @@
+{
+  "name": "gif-maker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/uber5001/gif-maker",
+  "authors": [
+    "Scott Little <uber5001@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.4",
+    "bootstrap": "~3.3.2"
+  }
+}
