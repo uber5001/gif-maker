@@ -12,10 +12,7 @@ function getUniverse() {
                 },
 		currentPosition: 0,
 		filename: "",
-                gif = new GIF({
-                        workers: 2,
-                        quality: 10
-                });
+                frameDuration: 50
         };
 	return window.universe;
 }
@@ -24,18 +21,19 @@ function getUniverse() {
 /* Pass canvas element for image as well as position in array to insert, or -1 for a push. 
  * Returns number of frames
  */
-function addFrame(imageData,position) {
+function addFrame(imageData,index) {
+        index = (index === undefined) ? -1 : index;
         var u = window.universe;
         
         frame = {
                 image: imageData,
-                duration: 30
+                duration: u.frameDuration
         }
 
-        if(posititon < 0) {
+        if(index < 0) {
                 u.frames.push(frame);
         } else {
-                u.frames.splice(position,0,frame);
+                u.frames.splice(index,0,frame);
         }
         return u.frames.length;
 }
@@ -50,16 +48,20 @@ function removeFrame(index) {
  * Pass callback "onDone" in form of function(blob)
  */
 function renderUniverse(onDone) {
+        try {
         var u = window.universe;
-        for each(frame in u.frames) {
-                u.gif.addFrame(frame.image, {delay: frame.duration/u.speed});
+        var gif = new GIF({
+                workers: 2,
+                workerScript: "bower_components/gif.js/dist/gif.worker.js",
+                quality: 10
+        });
+        for(i in u.frames) {
+                var frame = u.frames[i];
+                gif.addFrame(frame.image, {delay: frame.duration/u.speed});
         }
         gif.on('finished',onDone);
         gif.render();
-}
-
-
-function demoRender() {
-        var u = getUniverse();
-        var 
+        } catch(e) {
+                console.log(e.stack);
+        }
 }
