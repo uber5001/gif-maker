@@ -1,0 +1,30 @@
+<polymer-element name="film-strip">
+	<template>
+		<style>
+			:host {
+				width: 100%;
+				overflow: auto;
+				display: block;
+				white-space: nowrap;
+			}
+			.item {
+				display: inline-block;
+			}
+		</style>
+			<template repeat="{{frame, index in universe.frames}}">
+				<div class="item">
+					<div><img src="{{frame.image}}"></div>
+					<div>{{frame.duration}}</div>
+					<button index="{{index}}" on-click="{{xClick}}">X</button>
+				</div>
+			</template>
+	</template>
+	<script>
+		Polymer({
+			universe: getUniverse(),
+			xClick: function(event, detail, sender) {
+				removeFrame(sender.getAttribute('index'));
+			}
+		});
+	</script>
+</polymer-element>
