@@ -69,5 +69,5 @@ function renderUniverse(onDone) {
 function moveFrame(index, offset) {
         var u = window.universe;
         var frame = u.frames.splice(index,1);
-        u.frames.splice(index+offset,0,frame);
+        u.frames.splice(index+offset,0,frame[0]);
 }
