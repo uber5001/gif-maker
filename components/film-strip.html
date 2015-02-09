@@ -25,13 +25,13 @@
 		Polymer({
 			universe: getUniverse(),
 			xClick: function(event, detail, sender) {
-				removeFrame(sender.getAttribute('index'));
+				removeFrame(parseInt(sender.getAttribute('index')));
 			},
 			lClick: function(event, detail, sender) {
-				
+				moveFrame(parseInt(sender.getAttribute('index')), -1);
 			},
 			rClick: function(event, detail, sender) {
-
+				moveFrame(parseInt(sender.getAttribute('index')), 1);
 			}
 		});
 	</script>
