@@ -15,7 +15,9 @@
 				<div class="item">
 					<div><img src="{{frame.image}}"></div>
 					<div>{{frame.duration}}</div>
+					<button index="{{index}}" on-click="{{lClick}}"><</button>
 					<button index="{{index}}" on-click="{{xClick}}">X</button>
+					<button index="{{index}}" on-click="{{rClick}}">></button>
 				</div>
 			</template>
 	</template>
@@ -24,6 +26,12 @@
 			universe: getUniverse(),
 			xClick: function(event, detail, sender) {
 				removeFrame(sender.getAttribute('index'));
+			},
+			lClick: function(event, detail, sender) {
+				
+			},
+			rClick: function(event, detail, sender) {
+
 			}
 		});
 	</script>
