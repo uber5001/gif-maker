@@ -6,18 +6,28 @@
 				overflow: auto;
 				display: block;
 				white-space: nowrap;
+				position: relative;
 			}
 			.item {
-				display: inline-block;
+				width: 0;
+				height: 0;
+				position: relative;
+				transition: left .3s;
+			}
+			.item > div {
+				width: 100px;
+				height: 200px;
 			}
 		</style>
 			<template repeat="{{frame, index in universe.frames}}">
-				<div class="item">
-					<div><img src="{{frame.image}}"></div>
-					<div>{{frame.duration}}</div>
-					<button index="{{index}}" on-click="{{lClick}}"><</button>
-					<button index="{{index}}" on-click="{{xClick}}">X</button>
-					<button index="{{index}}" on-click="{{rClick}}">></button>
+				<div class="item" style="left: {{index*100}}px;">
+					<div>
+						<div><img src="{{frame.image}}"></div>
+						<div>{{frame.duration}}</div>
+						<button index="{{index}}" on-click="{{lClick}}"><</button>
+						<button index="{{index}}" on-click="{{xClick}}">X</button>
+						<button index="{{index}}" on-click="{{rClick}}">></button>
+					</div>
 				</div>
 			</template>
 	</template>
