@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Gif-Maker</title>
-    <script src="bower_components/gif.js/dist/gif.js"></script>
-	<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-    <script src="universe.js"></script>
-    <script src="stateStore.js"></script>
-	<link rel="import" href="bower_components/polymer/polymer.html">
-	<link rel="import" href="components/film-strip.html">
-	<script src="main.js" defer></script>
+<html lang="en" ng-app="gifMakerApp">
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Gif-Maker</title>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="controllers.js"></script>
+		<script src="bower_components/gif.js/dist/gif.js"></script>
+		<script src="universe.js"></script>
+		<script src="stateStore.js"></script>
+		<script src="main.js" defer></script>
     </head>
-    <body>
-		<div id="">
-		</div>
-		<div id="filmStrip">
-			<film-strip></film-strip>	
-		</div>
-		<div id="">
-		</div>
+    <body ng-controller="FilmstripCtrl">
+		<ul>
+			<li ng-repeat="frame in universe.frames">
+				{{frame.duration}}<img src="{{frame.image}}">
+				<button type="button" ng-click="moveFrame($index, -1)"><</button>
+				<button type="button" ng-click="removeFrame($index)">X</button>
+				<button type="button" ng-click="moveFrame($index, 1)">></button>
+			</li>
+		</ul>
     </body>
 </html>
