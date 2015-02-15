@@ -1,5 +1,9 @@
 var gifMakerApp = angular.module('gifMakerApp', []);
 
+gifMakerApp.config(["$sceProvider", function($sceProvider) {
+	$sceProvider.enabled(false); //disables some angular security
+}]);
+
 gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	$scope.universe = getUniverse()
 	$scope.removeFrame = removeFrame;
@@ -49,4 +53,9 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 		filePicker.click();
 	}
 	//$scope.$watchCollection('universe.frames', function() {console.log(arguments);})
+});
+
+
+window.addEventListener('polymer-ready', function() {
+	angular.bootstrap(document, ['gifMakerApp']);
 });

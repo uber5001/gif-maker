@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="gifMakerApp">
+<html lang="en">
     <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>Gif-Maker</title>
 		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<link rel="import" href="bower_components/crop-img/crop-img.html">
 		<script src="controllers.js"></script>
 		<script src="bower_components/gif.js/dist/gif.js"></script>
 		<script src="universe.js"></script>
@@ -34,6 +36,13 @@
 				height: 200px; /* uhhh, 20px for scroll bar? */
 				box-shadow:0 0 4px rgba(0,0,0,.3), 0 3px 4px rgba(0,0,0,.3);
 			}
+			.filmstrip-item-img {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
 			.filmstrip-item-left {
 			}
 		</style>
@@ -45,7 +54,16 @@
 				ng-style="
 					{left: 220 * frame.$$index + 20 + 'px'};
 			">
-				{{frame.duration}}<img src="{{frame.image}}">
+				{{frame.duration}}
+				<crop-img
+					disabled="true"
+					class="filmstrip-item-img"
+					ng-src="{{frame.image}}"
+					top="0"
+					left="0"
+					width="200"
+					height="200"
+				></crop-img>
 				<button class="filmstrip-item-left" type="button" ng-click="moveFrame($index, -1)"><</button>
 				<button class="filmstrip-item-close" type="button" ng-click="removeFrame($index)">X</button>
 				<button class="filmstrip-item-right" type="button" ng-click="moveFrame($index, 1)">></button>
