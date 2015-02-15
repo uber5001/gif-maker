@@ -1,16 +1,52 @@
 var gifMakerApp = angular.module('gifMakerApp', []);
 
-gifMakerApp.controller('FilmstripCtrl', function($scope) {
+gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	$scope.universe = getUniverse()
 	$scope.removeFrame = removeFrame;
-	$scope.moveFrame = moveFrame;
+	$scope.moveFrame = function(index, offset) {
+		moveFrame(index, offset);
+		$timeout(function() {
+			updatePositions();	
+		});
+	};
 	var universe = getUniverse();
-	var q = 1;
-	function addContinuous() {
-		addFrame("data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7");
-		universe.frames[universe.frames.length-1].duration = q++;
-		$scope.$apply();
-		setTimeout(addContinuous, 100*q);
+	
+	function updatePositions() {
+		for (var i = 0; i < universe.frames.length; i++) {
+			universe.frames[i].$$index = i;
+		}
 	}
-	addContinuous();
+
+	//create a single hidden element for picking files
+	var filePicker = document.createElement('input');
+	filePicker.setAttribute('type', 'file');
+	filePicker.setAttribute('accept', 'image/*');
+	filePicker.onchange = function() {
+		var files = filePicker.files;
+		if (files.length == 0) {
+			console.log("wasn't expecting 0 files!");
+			return;
+		}
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var reader = new FileReader();
+			// generate a new function scope and pass in
+			// "file", so that it doesn't get lost in the
+			// next iteration
+			reader.onload = (function(file) {
+				return function(e) {
+					//render to page
+					addFrame(e.target.result);
+					updatePositions();
+					$scope.$apply();
+				}
+			})(file);
+			reader.readAsDataURL(file);
+		}
+		filePicker.value = '';
+	}
+	$scope.pickFile = function() {
+		filePicker.click();
+	}
+	//$scope.$watchCollection('universe.frames', function() {console.log(arguments);})
 });
