@@ -6,7 +6,12 @@ gifMakerApp.config(["$sceProvider", function($sceProvider) {
 
 gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	$scope.universe = getUniverse()
-	$scope.removeFrame = removeFrame;
+	$scope.removeFrame = function(index) {
+		removeFrame(index);	
+		$timeout(function() {
+			updatePositions();	
+		});
+	}
 	$scope.moveFrame = function(index, offset) {
 		moveFrame(index, offset);
 		$timeout(function() {
@@ -25,6 +30,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	var filePicker = document.createElement('input');
 	filePicker.setAttribute('type', 'file');
 	filePicker.setAttribute('accept', 'image/*');
+	filePicker.setAttribute('multiple', 'true');
 	filePicker.onchange = function() {
 		var files = filePicker.files;
 		if (files.length == 0) {
