@@ -1,9 +1,11 @@
 /* 
 	observeAndSave()
 	Call once. Pass the universe object to be observed 
-	and saved on every change. Callback signature-
-	function(changes, currentStateOfSavedUniverse)
+	and saved on every change.
+	Callback signature: function(currentStateOfSavedUniverse)
 	Error function signature: function(errorMessage) [optional]
+
+	Example in test/lsExample.html
 */
 
 function observeAndSave (universe, callback, err) {
@@ -16,10 +18,13 @@ function observeAndSave (universe, callback, err) {
 	}
 	else {
 		try {
-			Object.observe(universe, function(changes){	
-				localStorage.setItem('universe', JSON.stringify(universe));
-				callback(changes, universe);
+
+			var observer = new ObjectObserver(universe);
+			observer.open(function(added, removed, changed, getOldValueFn) {
+				localStorage.setItem('universe', JSON.stringify(observer.value_));
+				callback(observer.value_);
 			});
+
 		}
 		catch(e) {
 			if (err!=null)
