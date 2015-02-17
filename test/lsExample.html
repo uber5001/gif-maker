@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bower_components/observe-js/src/observe.js"></script>
+	<script src="../stateStore.js"></script>
+	<script>
+		console.log("READY");
+		
+		universe = {"a":"ayy"};
+		observeAndSave(universe, function(newUniverse){
+			console.log(newUniverse);			
+		});
+
+		// Code to change universe
+		setTimeout(function(){
+			console.log("CHANGING");
+			universe.a = "lmao";
+		}, 5000);
+
+		// Code to retrieve universe from localStorage		
+		setTimeout(function(){
+			console.log("RETRIEVING");
+			console.log(retrieveState());
+		},10000);
+
+
+	</script>
+</head>
+<body>
+	<h1>EXAMPLE</h1>
+	<br>Open console. 
+	<br>At 5seconds- triggers the save and logs "CHANGING".
+	<br>At 10seconds- showcases retrieve and logs "RETRIEVING".
+
+	<br><br><br>
+
+	<pre>
+		console.log("READY");
+		
+		universe = {"a":"ayy"};
+		observeAndSave(universe, function(newUniverse){
+			console.log(newUniverse);			
+		});
+
+		// Code to change universe
+		setTimeout(function(){
+			console.log("CHANGING");
+			universe.a = "lmao";
+		}, 5000);
+
+		// Code to retrieve universe from localStorage		
+		setTimeout(function(){
+			console.log("RETRIEVING");
+			console.log(retrieveState());
+		},10000);
+	</pre>
+
+</body>
+</html>
