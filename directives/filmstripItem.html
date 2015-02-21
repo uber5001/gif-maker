@@ -1,0 +1,15 @@
+<li class="filmstrip-item"> 
+	{{frame.duration}}
+	<crop-img
+		disabled="true"
+		class="filmstrip-item-img"
+		ng-src="{{frame.image}}"
+		top="0"
+		left="0"
+		width="200"
+		height="200"
+	></crop-img>
+	<button class="filmstrip-item-left" type="button" ng-click="moveFrame($index, -1)"><</button>
+	<button class="filmstrip-item-close" type="button" ng-click="removeFrame($index)">X</button>
+	<button class="filmstrip-item-right" type="button" ng-click="moveFrame($index, 1)">></button>
+</li>
