@@ -60,8 +60,3 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	}
 	//$scope.$watchCollection('universe.frames', function() {console.log(arguments);})
 });
-
-
-window.addEventListener('polymer-ready', function() {
-	angular.bootstrap(document, ['gifMakerApp']);
-});
