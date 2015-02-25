@@ -43,7 +43,7 @@ function observeAndSave (universe, callback, err) {
 
 function retrieveState (err) {
 	var universe = localStorage.getItem('universe');
-	if (universe==null) {
+	if (universe===null || universe===undefined || universe==={}) {
 		if (err!=null)
 			err("ERROR: Local storage does not have a universe object");
 		return null;
