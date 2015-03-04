@@ -10,7 +10,7 @@ function getUniverse() {
 				y: 0
 			}
                 },
-		currentPosition: 0,
+		currentPosition: -1,
 		filename: "",
                 frameDuration: 50
         };
@@ -27,7 +27,13 @@ function addFrame(imageData,index) {
         
         frame = {
                 image: imageData,
-                duration: u.frameDuration
+                duration: u.frameDuration,
+				crop: {
+					top: 0,
+					left: 0,
+					width: 200,
+					height: 200
+				}
         }
 
         if(index < 0) {

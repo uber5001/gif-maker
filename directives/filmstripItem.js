@@ -5,3 +5,12 @@ gifMakerApp.directive('filmstripItem', function() {
 		templateUrl: 'directives/filmstripItem.html'
 	}
 });
+
+gifMakerApp.controller('FilmstripItemCtrl', function($scope) {
+	$scope.imgClick = function(index) {
+		universe.currentPosition = index;
+	}
+	$scope.closeModal = function() {
+		universe.currentPosition = -1;
+	}
+});
