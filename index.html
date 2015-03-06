@@ -11,6 +11,10 @@
 		<script src="universe.js"></script>
 		<script src="stateStore.js"></script>
 		
+		<!-- dashboard directive -->
+		<script src="directives/dashboard.js"></script>
+		<link rel="stylesheet" href="directives/dashboard.css">
+		
 		<!-- filmstrip directive -->
 		<script src="directives/filmstrip.js"></script>
 		<link rel="stylesheet" href="directives/filmstrip.css">
@@ -24,19 +28,7 @@
 	<body ng-controller="FilmstripCtrl">
 		<button type="button" class="add-image" ng-click="pickFile()">Add Image(s)</button>
 		<filmstrip></filmstrip>
-
-
-		<div id="Dashboard">
-			Speed
-			<input type="number" ng-model="universe.speed">
-			<br>		
-			Frame Duration: 
-			<input type="number" ng-model="universe.frameDuration">
-			<br>		
-			File Name: 
-			<input type="text" ng-model="universe.filename">
-		</div>
-
+		<dashboard></dashboard>
 	</body>
 </html>
 <br>
