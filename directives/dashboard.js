@@ -7,15 +7,24 @@ gifMakerApp.directive('dashboard', function() {
 });
 
 gifMakerApp.controller('DashboardCtrl', function($scope) {
-	$scope.validateNumber = function($event) {
-		var numRegex = /^\d*(\.\d+)?$/ ;
-		console.log($event.target.value);
-		if(numRegex.test($event.target.value)){
+	$scope.validate = function($event, type) {
+
+		var regex;
+		switch (type) {
+			case "number":
+				regex = /^\d*(\.\d+)?$/;
+				break;
+			case "filename":
+				regex = /^[\dA-Za-z][\w\s-]*$/;
+				break;
+		}
+		
+		if(regex.test($event.target.value)){
 			universe[$event.target.name] = $event.target.value;
 		}
 		else {
-			alert("Please enter a valid number");
-			$event.target.value = universe.$event.target.name;
+			alert("What you just entered is not a valid "+type);
+			$event.target.value = universe[$event.target.name];
 		}
 	}
 

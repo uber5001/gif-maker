@@ -2,23 +2,23 @@
 	
 	<div class="group">      
       <label>Speed</label>
-      <input type="text" ng-blur="validateNumber($event)" name="speed">
-    <span class="highlight"></span>
+      <input type="text" ng-blur="validate($event, 'number')" name="speed" value="{{universe.speed}}">
+      <span class="highlight"></span>
       <span class="bar"></span>
   </div>
 
 	
 	<div class="group">      
       <label>Default Frame Duration</label>
-      <input type="text" ng-model="universe.frameDuration">
-    <span class="highlight"></span>
+      <input type="text" ng-blur="validate($event, 'number')" name="frameDuration" value="{{universe.frameDuration}}">
+      <span class="highlight"></span>
       <span class="bar"></span>
     </div>
 
 	
 	<div class="group">      
       <label>File Name</label>
-      <input type="text" ng-model="universe.filename">
+      <input type="text" ng-blur="validate($event, 'filename')" name="filename" value="{{universe.filename}}">
       <span class="highlight"></span>
       <span class="bar"></span>
   </div> 
