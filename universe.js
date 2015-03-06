@@ -59,10 +59,13 @@ function renderUniverse(onDone) {
         var gif = new GIF({
                 workers: 2,
                 workerScript: "bower_components/gif.js/dist/gif.worker.js",
-                quality: 10
+                quality: 10,
+				width: 200,
+				height: 200
         });
         for(i in u.frames) {
                 var frame = u.frames[i];
+				console.log(frame.image);
                 gif.addFrame(frame.image, {delay: frame.duration/u.speed});
         }
         gif.on('finished',onDone);

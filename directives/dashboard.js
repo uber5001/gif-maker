@@ -6,5 +6,9 @@ gifMakerApp.directive('dashboard', function() {
 	}
 });
 gifMakerApp.controller('DashboardCtrl', function($scope) {
-	
+	$scope.generate = function() {
+		renderUniverse(function() {
+			console.log(arguments);
+		});
+	}
 });
