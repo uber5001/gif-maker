@@ -38,6 +38,13 @@ function addFrame(imageData,index) {
         return u.frames.length;
 }
 
+function addGIF(imageData,index) {
+	index = (index === undefined) ? -1 : index;
+	var u = window.universe;
+	var gif = parseGIF(imageData);
+}
+
+
 function removeFrame(index) {
         var u = window.universe;
         u.frames.splice(index,1);
@@ -57,7 +64,11 @@ function renderUniverse(onDone) {
         });
         for(i in u.frames) {
                 var frame = u.frames[i];
-                gif.addFrame(frame.image, {delay: frame.duration/u.speed});
+		// Potential bug in non-chrome
+		// May need to use img.onload to wait until it's "loaded"
+                var img = new Image();
+		img.src = frame.image;
+		gif.addFrame(img, {delay: frame.duration/u.speed});
         }
         gif.on('finished',onDone);
         gif.render();
