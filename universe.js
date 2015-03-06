@@ -3,8 +3,8 @@ function getUniverse() {
                 frames: [],
                 speed: 1,
                 dimensions: {
-                	height: 0,
-			width: 0,
+                	height: 200,
+			width: 200,
 			origin: {
 				x: 0,
 				y: 0
@@ -59,7 +59,9 @@ function renderUniverse(onDone) {
         var gif = new GIF({
                 workers: 2,
                 workerScript: "bower_components/gif.js/dist/gif.worker.js",
-                quality: 10
+                quality: 10,
+				width: universe.dimensions.width,
+				height: universe.dimensions.height
         });
         for(i in u.frames) {
                 var frame = u.frames[i];
