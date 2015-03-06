@@ -18,4 +18,13 @@ gifMakerApp.controller('DashboardCtrl', function($scope) {
 			$event.target.value = universe.$event.target.name;
 		}
 	}
+
+	$scope.generate = function() {
+		renderUniverse(function(blob) {
+			var a = document.createElement('a');
+			a.href = window.URL.createObjectURL(blob);
+			a.download = "foo.gif";
+			a.click();
+		});
+	}
 });

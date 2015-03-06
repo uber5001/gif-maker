@@ -63,7 +63,9 @@ function renderUniverse(onDone) {
         });
         for(i in u.frames) {
                 var frame = u.frames[i];
-                gif.addFrame(frame.image, {delay: frame.duration/u.speed});
+		var img = document.createElement("img");
+		img.setAttribute('src',frame.image);
+                gif.addFrame(img, {delay: frame.duration/u.speed});
         }
         gif.on('finished',onDone);
         gif.render();
