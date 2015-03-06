@@ -50,3 +50,8 @@ function retrieveState (err) {
 	}
 	return JSON.parse(universe);
 }
+
+
+observeAndSave(getUniverse(), function(val){}, function(err){
+	console.log(err);
+})

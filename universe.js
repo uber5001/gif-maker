@@ -11,7 +11,7 @@ function getUniverse() {
 			}
                 },
 		currentPosition: -1,
-		filename: "",
+		filename: "myGIF",
                 frameDuration: 50
         };
 	return window.universe;
