@@ -5,3 +5,6 @@ gifMakerApp.directive('dashboard', function() {
 		templateUrl: 'directives/dashboard.html'
 	}
 });
+gifMakerApp.controller('DashboardCtrl', function($scope) {
+	
+});
