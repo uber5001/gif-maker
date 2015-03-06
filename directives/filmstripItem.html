@@ -1,0 +1,31 @@
+<li
+	ng-controller="FilmstripItemCtrl"
+	class="filmstrip-item"
+	ng-class="{active: universe.currentPosition == $index}"
+> 
+	{{frame.duration}}
+	<crop-img
+		ng-click="imgClick($index)"
+		disabled="true"
+		class="filmstrip-item-img"
+		ng-src="{{frame.image}}"
+		top="{{universe.frames[$index].crop.top}}"
+		left="{{universe.frames[$index].crop.left}}"
+		width="{{universe.frames[$index].crop.width}}"
+		height="{{universe.frames[$index].crop.height}}"
+	></crop-img>
+	<button class="filmstrip-item-left" type="button" ng-click="moveFrame($index, -1)"><</button>
+	<button class="filmstrip-item-close" type="button" ng-click="removeFrame($index)">X</button>
+	<button class="filmstrip-item-right" type="button" ng-click="moveFrame($index, 1)">></button>
+	<div class="filmstrip-item-modal">
+		<button type="button" ng-click="closeModal()" class="filmstrip-item-modal-close"><-</button>
+		<label>Top</label>
+		<input type="number" ng-model="universe.frames[$index].crop.top">
+		<label>Left</label>
+		<input type="number" ng-model="universe.frames[$index].crop.left">
+		<label>Width</label>
+		<input type="number" ng-model="universe.frames[$index].crop.width">
+		<label>Height</label>
+		<input type="number" ng-model="universe.frames[$index].crop.height">
+	</div>
+</li>
