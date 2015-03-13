@@ -1,20 +1,27 @@
 function getUniverse() {
-        window.universe = window.universe || {
-                frames: [],
-                speed: 1,
-                dimensions: {
-                	height: 200,
-			width: 200,
-			origin: {
-				x: 0,
-				y: 0
-			}
-                },
-		currentPosition: -1,
-		filename: "myGIF",
-                frameDuration: 50
-        };
-	return window.universe;
+
+        if (!window.universe) {
+
+                window.universe = retrieveState();
+
+                window.universe = window.universe || {
+                        frames: [],
+                        speed: 1,
+                        dimensions: {
+                        	height: 200,
+        			width: 200,
+        			origin: {
+        				x: 0,
+        				y: 0
+        			}
+                        },
+        		currentPosition: -1,
+        		filename: "myGIF",
+                        frameDuration: 50
+                };
+        }
+        
+        return window.universe;
 }
 
 
