@@ -20,7 +20,8 @@ function getUniverse() {
                         frameDuration: 50
                 };
         }
-        
+
+        window.univ = {univStr: JSON.stringify(window.universe)};
         return window.universe;
 }
 
@@ -89,9 +90,4 @@ function moveFrame(index, offset) {
         u.frames.splice(index+offset,0,frame[0]);
 }
 
-
-observeAndSave(
-        getUniverse(), 
-        function(val){}, 
-        function(err){console.log(err);}
-);
+observeAndSave(getUniverse());

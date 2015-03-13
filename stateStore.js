@@ -8,30 +8,34 @@
 	Example in test/lsExample.html
 */
 
-function observeAndSave (universe, callback, err) {
+(function(){
 
-	this.calls = (this.calls || 0) + 1;
+	var calls = 0;
 
-	if (this.calls > 1) {
-		if (err!=null)
-			err("WARNING: Multiple calls to observeAndSave. Object already being observed. Call ignored");
-	}
-	else {
-		try {
+	window.observeAndSave = function (universe, callback, err) {
 
-			var observer = new ObjectObserver(universe);
-			observer.open(function(added, removed, changed, getOldValueFn) {
-				localStorage.setItem('universe', JSON.stringify(observer.value_));
-				callback(observer.value_);
-			});
+		calls++;
 
-		}
-		catch(e) {
+		console.log(this);
+
+		if (calls > 1) {
 			if (err!=null)
-				err("ERROR: Failed to observe");
+				err("WARNING: Multiple calls to observeAndSave. Object already being observed. Call ignored");
+		}
+		else {
+			try {
+				setInterval(function(){
+				    localStorage.setItem('universe', JSON.stringify(universe));
+				}, 100);
+
+			}
+			catch(e) {
+				if (err!=null)
+					err("ERROR: Failed to observe");
+			}
 		}
 	}
-}
+})();
 
 
 /*
