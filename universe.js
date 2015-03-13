@@ -81,3 +81,10 @@ function moveFrame(index, offset) {
         var frame = u.frames.splice(index,1);
         u.frames.splice(index+offset,0,frame[0]);
 }
+
+
+observeAndSave(
+        getUniverse(), 
+        function(val){}, 
+        function(err){console.log(err);}
+);

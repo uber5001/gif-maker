@@ -5,7 +5,8 @@ gifMakerApp.config(["$sceProvider", function($sceProvider) {
 }]);
 
 gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
-	$scope.universe = getUniverse()
+	$scope.universe = getUniverse();
+
 	$scope.removeFrame = function(index) {
 		removeFrame(index);	
 		$timeout(function() {
