@@ -11,6 +11,6 @@ gifMakerApp.controller('FilmstripItemCtrl', function($scope) {
 		universe.currentPosition = index;
 	}
 	$scope.closeModal = function() {
-		universe.currentPosition = -1;
+		universe.currentPosition = 0;
 	}
 });
