@@ -14,7 +14,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 		});
 	}
 	$scope.moveFrame = function(index, offset) {
-		moveFrame(index, offset);
+		moveFrame(index, -offset);
 		$timeout(function() {
 			updatePositions();	
 		});
