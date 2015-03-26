@@ -8,7 +8,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	$scope.universe = getUniverse();
 
 	$scope.removeFrame = function(index) {
-		removeFrame(index);	
+		removeFrame(index + 1);	
 		$timeout(function() {
 			updatePositions();	
 		});
