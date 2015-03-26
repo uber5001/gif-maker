@@ -19,7 +19,6 @@
                 "bootstrap": "~3.3.2",
                 "gif.js": "~0.1.6",
                 "angular": "~1.3.13",
-                "crop-img": "*",
-                "observe-js" : "*"
+                "crop-img": "*"
         }
 }

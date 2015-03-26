@@ -1,20 +1,28 @@
 function getUniverse() {
-        window.universe = window.universe || {
-                frames: [],
-                speed: 1,
-                dimensions: {
-                	height: 0,
-			width: 0,
-			origin: {
-				x: 0,
-				y: 0
-			}
-                },
-		currentPosition: 0,
-		filename: "",
-                frameDuration: 50
-        };
-	return window.universe;
+
+        if (!window.universe) {
+
+                window.universe = retrieveState();
+
+                window.universe = window.universe || {
+                        frames: [],
+                        speed: 1,
+                        dimensions: {
+                        	height: 200,
+        			width: 200,
+        			origin: {
+        				x: 0,
+        				y: 0
+        			}
+                        },
+        		currentPosition: -1,
+        		filename: "myGIF",
+                        frameDuration: 50
+                };
+        }
+
+        window.univ = {univStr: JSON.stringify(window.universe)};
+        return window.universe;
 }
 
 
@@ -27,7 +35,13 @@ function addFrame(imageData,index) {
         
         frame = {
                 image: imageData,
-                duration: u.frameDuration
+                duration: u.frameDuration,
+				crop: {
+					top: 0,
+					left: 0,
+					width: 200,
+					height: 200
+				}
         }
 
         if(index < 0) {
@@ -53,11 +67,15 @@ function renderUniverse(onDone) {
         var gif = new GIF({
                 workers: 2,
                 workerScript: "bower_components/gif.js/dist/gif.worker.js",
-                quality: 10
+                quality: 10,
+				width: universe.dimensions.width,
+				height: universe.dimensions.height
         });
         for(i in u.frames) {
                 var frame = u.frames[i];
-                gif.addFrame(frame.image, {delay: frame.duration/u.speed});
+		var img = document.createElement("img");
+		img.setAttribute('src',frame.image);
+                gif.addFrame(img, {delay: frame.duration/u.speed});
         }
         gif.on('finished',onDone);
         gif.render();
@@ -71,3 +89,5 @@ function moveFrame(index, offset) {
         var frame = u.frames.splice(index,1);
         u.frames.splice(index+offset,0,frame[0]);
 }
+
+observeAndSave(getUniverse());
