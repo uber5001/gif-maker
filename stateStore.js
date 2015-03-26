@@ -18,14 +18,14 @@
 
 		console.log(this);
 
-		if (calls > 1) {
+		if (calls > 0) {
 			if (err!=null)
 				err("WARNING: Multiple calls to observeAndSave. Object already being observed. Call ignored");
 		}
 		else {
 			console.log(JSON.stringify(universe).length);
 			try {
-				setInterval(function(){
+				setTimeout(function(){
 					console.log('SHAVED');
 				    localStorage.setItem('universe', JSON.stringify(universe));
 				}, 100);
