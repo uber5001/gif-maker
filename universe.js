@@ -21,7 +21,7 @@ function getUniverse() {
                 };
         }
 
-        window.univ = {univStr: JSON.stringify(window.universe)};
+        window.univ = {univStr: window.universe};
         return window.universe;
 }
 
