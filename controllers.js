@@ -30,7 +30,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	//create a single hidden element for picking files
 	var filePicker = document.createElement('input');
 	filePicker.setAttribute('type', 'file');
-	filePicker.setAttribute('accept', 'image/*');
+	filePicker.setAttribute('accept', '*');
 	filePicker.setAttribute('multiple', 'false');
 	filePicker.onchange = function() {
 		var files = filePicker.files;
