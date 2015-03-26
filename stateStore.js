@@ -49,10 +49,10 @@
 
 function retrieveState (err) {
 	var universe = localStorage.getItem('universe');
-	if (universe===null || universe===undefined || universe==={}) {
-		if (err!=null)
-			err("ERROR: Local storage does not have a universe object");
-		return null;
-	}
+	
+	if (err!=null)
+		err("ERROR: Local storage does not have a universe object");
+	return null;
+
 	return JSON.parse(universe);
 }
