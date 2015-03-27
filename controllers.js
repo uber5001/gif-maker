@@ -57,7 +57,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 		filePicker.value = '';
 	}
 	$scope.pickFile = function() {
-		filePicker.clik();
+		filePicker.click();
 	}
 	//$scope.$watchCollection('universe.frames', function() {console.log(arguments);})
 });
