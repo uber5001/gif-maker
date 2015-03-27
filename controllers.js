@@ -23,7 +23,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	
 	function updatePositions() {
 		for (var i = 0; i < universe.frames.length; i++) {
-			universe.frames[i].$$index = i;
+			universe.frames[i].$$index = universe.frames.length-i-1;
 		}
 	}
 
