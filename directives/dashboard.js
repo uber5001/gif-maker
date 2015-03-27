@@ -12,7 +12,7 @@ gifMakerApp.controller('DashboardCtrl', function($scope) {
 		var regex;
 		switch (type) {
 			case "fibblenumber":
-				regex = /^\d*(\.\d+)?$/;
+				regex = /\d/;
 				break;
 			case "filename":
 				regex = /^[\dA-Za-z][\w\s-]*$/;
