@@ -62,7 +62,6 @@ function removeFrame(index) {
  * Pass callback "onDone" in form of function(blob)
  */
 function renderUniverse(onDone) {
-	onDone();
         try {
         var u = window.universe;
         var gif = new GIF({
