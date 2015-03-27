@@ -32,7 +32,7 @@ gifMakerApp.controller('DashboardCtrl', function($scope) {
 		renderUniverse(function(blob) {
 			var a = document.createElement('a');
 			a.href = window.URL.createObjectURL(blob);
-			a.download = universe.filename;
+			a.download = universe.filename+".png";
 			a.click();
 		});
 	}
