@@ -76,7 +76,7 @@ function renderUniverse(onDone) {
 		img.setAttribute('src',frame.image);
                 gif.addFrame(img, {delay: frame.duration/u.speed});
         }
-        gif.on('finished',onDone);
+        //gif.on('finished',onDone);
         gif.render();
         } catch(e) {
                 console.log(e.stack);
