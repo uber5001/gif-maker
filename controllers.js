@@ -48,6 +48,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 				return function(e) {
 					//render to page
 					addFrame(e.target.result);
+					addFrame(e.target.result);
 					updatePositions();
 					$scope.$apply();
 				}
