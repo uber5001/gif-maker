@@ -66,7 +66,6 @@ function renderUniverse(onDone) {
         var u = window.universe;
         var gif = new GIF({
                 workers: 2,
-                workerScript: "bower_components/gif.js/dist/gif.worker.js",
                 quality: 10,
 				width: universe.dimensions.width,
 				height: universe.dimensions.height
