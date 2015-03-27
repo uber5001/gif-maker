@@ -31,7 +31,7 @@ gifMakerApp.controller('FilmstripCtrl', function($scope, $timeout) {
 	var filePicker = document.createElement('input');
 	filePicker.setAttribute('type', 'file');
 	filePicker.setAttribute('accept', '*');
-	filePicker.setAttribute('multiple', 'false');
+	//filePicker.setAttribute('multiple', 'true');
 	filePicker.onchange = function() {
 		var files = filePicker.files;
 		if (files.length == 0) {
