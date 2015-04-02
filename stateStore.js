@@ -16,8 +16,6 @@
 
 		calls++;
 
-		console.log(this);
-
 		if (calls > 1) {
 			if (err!=null)
 				err("WARNING: Multiple calls to observeAndSave. Object already being observed. Call ignored");
@@ -27,7 +25,6 @@
 				setInterval(function(){
 				    localStorage.setItem('universe', JSON.stringify(universe));
 				}, 100);
-
 			}
 			catch(e) {
 				if (err!=null)
