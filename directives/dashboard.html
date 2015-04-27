@@ -1,25 +1,42 @@
+
 <form id="Dashboard" ng-controller="DashboardCtrl">
+<style>
+	.text-box-hacky {
+		display:inline-block !important; 
+		width:100px !important;
+	}
+	.ib {
+		display: inline-block;
+		width:200px;
+	}
+</style>
 	
-	<div class="group">      
-      <label>Speed</label>
-      <input type="text" class="form-control" style="display:inline-block !important; width:100px !important" ng-blur="validate($event, 'number')" name="speed" value="{{universe.speed}}">
+	<div class="group row">      
+      <div class='col-md-2 ib'><label>Speed</label></div>
+      <div class="col-md-2 ib">     
+	<input type="text" class="form-control text-box-hacky" ng-blur="validate($event, 'number')" name="speed" value="{{universe.speed}}">
+      </div>
       <span class="highlight"></span>
       <span class="bar"></span>
   </div>
 
 	
-	<div class="group">      
-      <label>Default Frame Duration</label>
-      <input type="text" ng-blur="validate($event, 'number')" name="frameDuration" value="{{universe.frameDuration}}">
-      <span class="highlight"></span>
+	<div class="group row">      
+      <div class="col-md-2 ib"><label>Default Frame Duration</label></div>
+	<div class="col-md-2 ib">
+      <input type="text" ng-blur="validate($event, 'number')" class="form-control text-box-hacky" name="frameDuration" value="{{universe.frameDuration}}">
+      </div>
+	<span class="highlight"></span>
       <span class="bar"></span>
     </div>
 
 	
-	<div class="group">      
-      <label>File Name</label>
-      <input type="text" ng-blur="validate($event, 'filename')" name="filename" value="{{universe.filename}}">
-      <span class="highlight"></span>
+	<div class="group row">      
+      <div class="col-md-2 ib"><label>File Name</label></div>
+	<div class="col-md-2 ib">
+      <input type="text" ng-blur="validate($event, 'filename')" class="form-control text-box-hacky" name="filename" value="{{universe.filename}}">
+	</div>     
+ <span class="highlight"></span>
       <span class="bar"></span>
   </div> 
 	
