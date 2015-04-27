@@ -3,7 +3,6 @@
 	class="filmstrip-item"
 	ng-class="{active: universe.currentPosition == $index}"
 > 
-	{{frame.duration}}
 	<crop-img
 		ng-click="imgClick($index)"
 		disabled="true"
@@ -27,5 +26,7 @@
 		<input type="number" ng-model="universe.frames[$index].crop.width">
 		<label>Height</label>
 		<input type="number" ng-model="universe.frames[$index].crop.height">
+		<label>Duration</label>
+		<input type="number" ng-model="universe.frames[$index].duration">
 	</div>
 </li>
