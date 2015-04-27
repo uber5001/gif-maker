@@ -17,7 +17,10 @@
 	<button class="filmstrip-item-close" type="button" ng-click="removeFrame($index)">X</button>
 	<button class="filmstrip-item-right" type="button" ng-click="moveFrame($index, 1)">></button>
 	<div class="filmstrip-item-modal">
-		<button type="button" ng-click="closeModal()" class="filmstrip-item-modal-close"><-</button>
+		<div class="col-md-3"></div>
+		<div class="col-md-4">
+			<button type="button" ng-click="closeModal()" class="filmstrip-item-modal-close btn btn-danger btn-lg">&#8249;</button>
+		</div>
 		<label>Top</label>
 		<input type="number" ng-model="universe.frames[$index].crop.top">
 		<label>Left</label>
@@ -28,5 +31,6 @@
 		<input type="number" ng-model="universe.frames[$index].crop.height">
 		<label>Duration</label>
 		<input type="number" ng-model="universe.frames[$index].duration">
+	
 	</div>
 </li>

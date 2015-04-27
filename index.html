@@ -27,9 +27,11 @@
 		<link rel="stylesheet" href="main.css">
 	</head>
 	<body ng-controller="FilmstripCtrl">
-		<button type="button" class="add-image" ng-click="pickFile()">Add Image(s)</button>
-		<filmstrip></filmstrip>
-		<dashboard></dashboard>
+		<div class='container'>
+			<filmstrip></filmstrip>
+			<dashboard></dashboard>
+			<button type="button" class="add-image btn btn-primary btn-md center-block" ng-click="pickFile()">Add Image(s)</button>
+		</div>
 	</body>
 </html>
 <br>
