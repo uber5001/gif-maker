@@ -30,7 +30,6 @@ function getUniverse() {
  * Returns number of frames
  */
 function addFrame(imageData,index) {
-	Window.location.reload();
         index = (index === undefined) ? -1 : index;
         var u = window.universe;
         
