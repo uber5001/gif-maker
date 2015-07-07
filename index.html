@@ -3,7 +3,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>Gif-Maker</title>
-		<script>alert("This is for debugging only! Make sure to remove before production or distributing to the other team");</script>
 		<script src="bower_components/angular/angular.min.js"></script>
 		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 		<link rel="import" href="bower_components/crop-img/crop-img.html">
@@ -18,7 +17,7 @@
 		
 		<!-- filmstrip directive -->
 		<script src="directives/filmstrip.js"></script>
-		<link rel="stylesheet" href="directives/filmstripcss">
+		<link rel="stylesheet" href="directives/filmstrip.css">
 		
 		<!-- filmstrip-item directive -->
 		<script src="directives/filmstripItem.js"></script>
@@ -28,7 +27,6 @@
 	</head>
 	<body ng-controller="FilmstripCtrl">
 		<button type="button" class="add-image" ng-click="pickFile()">Add Image(s)</button>
-		<button type="button" class="add-image" onclick="alert('ERROR')">Add Image(s)</button>
 		<filmstrip></filmstrip>
 		<dashboard></dashboard>
 	</body>
